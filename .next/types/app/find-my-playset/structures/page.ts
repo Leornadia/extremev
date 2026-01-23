@@ -1,4 +1,4 @@
-// File: /Users/almeidajose/Documents/A/App/Extreme V/Website/app/find-my-playset/structures/page.tsx
+// File: /Users/almeidajose/Documents/A/App/Extreme V/app/find-my-playset/structures/page.tsx
 import * as entry from '../../../../../app/find-my-playset/structures/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

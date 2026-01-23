@@ -1,1 +1,14 @@
-{}
+{
+  "app/find-my-playset/product/[id]/page.tsx -> @/components/viewer/Simple3DViewer": {
+    "id": 1689,
+    "files": [
+      "static/chunks/b536a0f1.72b4b4788932f21f.js",
+      "static/chunks/933.807d4bfccf7cd9b6.js",
+      "static/chunks/1689.efdde5f0c19a6fa1.js"
+    ]
+  },
+  "node_modules/@react-three/drei/core/FaceLandmarker.js -> @mediapipe/tasks-vision": {
+    "id": null,
+    "files": []
+  }
+}

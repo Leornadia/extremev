@@ -6,6 +6,10 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 
+// Check if database is available
+const dbUrl = process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL;
+const isDatabaseAvailable = !!dbUrl && !!prisma;
+
 // Mock users for demonstration (when database is not available)
 const mockUsers = [
   {
@@ -23,8 +27,8 @@ const mockUsers = [
 ];
 
 export const authOptions: NextAuthOptions = {
-  // Only use adapter if database is available
-  adapter: process.env.DATABASE_URL?.includes('localhost') ? undefined : PrismaAdapter(prisma),
+  // Only use adapter if database is available and prisma is initialized
+  adapter: isDatabaseAvailable ? PrismaAdapter(prisma) : undefined,
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -39,7 +43,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           // Try database first if available
-          if (process.env.DATABASE_URL && !process.env.DATABASE_URL.includes('localhost')) {
+          if (isDatabaseAvailable) {
             const user = await prisma.user.findUnique({
               where: {
                 email: credentials.email,
@@ -71,7 +75,7 @@ export const authOptions: NextAuthOptions = {
 
         // Fallback to mock users for demonstration
         const user = mockUsers.find(u => u.email === credentials.email);
-        
+
         if (!user) {
           throw new Error('Invalid credentials');
         }
@@ -93,18 +97,18 @@ export const authOptions: NextAuthOptions = {
       },
     }),
     // Only include OAuth providers if credentials are properly configured
-    ...(process.env.GOOGLE_CLIENT_ID && 
-        process.env.GOOGLE_CLIENT_SECRET && 
-        process.env.GOOGLE_CLIENT_ID !== 'your-google-client-id' ? [
+    ...(process.env.GOOGLE_CLIENT_ID &&
+      process.env.GOOGLE_CLIENT_SECRET &&
+      process.env.GOOGLE_CLIENT_ID !== 'your-google-client-id' ? [
       GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         allowDangerousEmailAccountLinking: true,
       })
     ] : []),
-    ...(process.env.FACEBOOK_CLIENT_ID && 
-        process.env.FACEBOOK_CLIENT_SECRET && 
-        process.env.FACEBOOK_CLIENT_ID !== 'your-facebook-app-id' ? [
+    ...(process.env.FACEBOOK_CLIENT_ID &&
+      process.env.FACEBOOK_CLIENT_SECRET &&
+      process.env.FACEBOOK_CLIENT_ID !== 'your-facebook-app-id' ? [
       FacebookProvider({
         clientId: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,

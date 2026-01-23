@@ -6,13 +6,6 @@
  * Displayed when the user is offline and tries to access a page that's not cached.
  */
 
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Offline - Extreme V',
-  description: 'You are currently offline',
-};
-
 export default function OfflinePage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-neutral-50 px-4">

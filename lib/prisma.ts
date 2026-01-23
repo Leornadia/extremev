@@ -8,9 +8,11 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient | null };
 
 let prismaInstance: PrismaClient | null = null;
 
-// Only initialize Prisma if DATABASE_URL is configured
+// Only initialize Prisma if POSTGRES_PRISMA_URL (Vercel/Supabase) or DATABASE_URL is configured
 // This prevents build hangs when no database is available
-if (process.env.DATABASE_URL) {
+const dbUrl = process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL;
+
+if (dbUrl) {
   try {
     prismaInstance = globalForPrisma.prisma ||
       new PrismaClient({
@@ -28,7 +30,7 @@ if (process.env.DATABASE_URL) {
     prismaInstance = null;
   }
 } else {
-  console.warn('DATABASE_URL not configured - using mock data');
+  console.warn('POSTGRES_PRISMA_URL/DATABASE_URL not configured - using mock data');
 }
 
 export const prisma = prismaInstance as PrismaClient;

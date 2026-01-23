@@ -1,0 +1,80 @@
+name: Monitoring & Health Checks
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  health-check:
+    name: Production Health Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check homepage
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://www.extremev.co.za)
+          if [ "$response" -ne 200 ]; then
+            echo "Homepage returned $response"
+            exit 1
+          fi
+          echo "✅ Homepage is healthy"
+
+      - name: Check API health endpoint
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://www.extremev.co.za/api/health)
+          if [ "$response" -ne 200 ]; then
+            echo "Health endpoint returned $response"
+            exit 1
+          fi
+          echo "✅ API health endpoint is healthy"
+
+      - name: Check configurator
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://www.extremev.co.za/configurator)
+          if [ "$response" -ne 200 ]; then
+            echo "Configurator returned $response"
+            exit 1
+          fi
+          echo "✅ Configurator is healthy"
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Production Health Check Failed',
+              body: 'Automated health check detected an issue with the production site. Please investigate immediately.',
+              labels: ['bug', 'critical', 'production']
+            })
+
+  performance-check:
+    name: Performance Monitoring
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Lighthouse audit
+        run: npm run audit -- --url=https://www.extremev.co.za
+        continue-on-error: true
+
+      - name: Upload audit results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-results
+          path: lighthouse-results/
+          retention-days: 30

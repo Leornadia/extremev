@@ -1,0 +1,24 @@
+name: Update Status Badge
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - completed
+
+jobs:
+  update-badge:
+    name: Update Deployment Status
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create status badge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ github.event.workflow_run.conclusion }}' || 'success';
+            const color = status === 'success' ? 'brightgreen' : 'red';
+            const message = status === 'success' ? 'passing' : 'failing';
+            
+            console.log(`Deployment status: ${message}`);

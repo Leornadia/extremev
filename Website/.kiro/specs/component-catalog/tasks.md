@@ -1,0 +1,158 @@
+# Implementation Plan
+
+- [ ] 1. Update database schema and types
+  - [ ] 1.1 Add size field to Component model in Prisma schema
+    - Add optional `size` field of type String to the Component model
+    - Create database migration for the new field
+    - _Requirements: 2.2_
+  - [ ] 1.2 Update TypeScript types with new categories and sizes
+    - Add COMPONENT_CATEGORIES constant with the 6 categories
+    - Add COMPONENT_SIZES constant with 4 size options
+    - Update ModularComponent interface to include size field
+    - _Requirements: 2.1, 2.2_
+  - [ ] 1.3 Write property test for category and size enum validation
+    - **Property 3: Category and Size Enum Validation**
+    - **Validates: Requirements 2.1, 2.2**
+
+- [ ] 2. Update component API endpoints
+  - [ ] 2.1 Update admin components API to support size field
+    - Modify POST handler to accept and validate size field
+    - Modify GET handler to support size filtering
+    - Update validation to enforce category enum values
+    - _Requirements: 1.1, 2.1, 2.2_
+  - [ ] 2.2 Update public components API with size filtering
+    - Add size query parameter support
+    - Return size field in component response
+    - Add category counts to response
+    - _Requirements: 2.3, 4.1, 5.1_
+  - [ ] 2.3 Write property test for component creation completeness
+    - **Property 1: Component Creation Completeness**
+    - **Validates: Requirements 1.1, 1.3**
+  - [ ] 2.4 Write property test for required field validation
+    - **Property 2: Required Field Validation**
+    - **Validates: Requirements 1.2, 7.2**
+  - [ ] 2.5 Write property test for filtering correctness
+    - **Property 5: Category and Size Filtering Correctness**
+    - **Validates: Requirements 2.3, 4.2, 5.1, 5.2**
+
+- [ ] 3. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 4. Update admin component form
+  - [ ] 4.1 Add size selector to ComponentFormModal
+    - Add size dropdown with Extra Large, Large, Medium, Small options
+    - Update category dropdown with new category values
+    - Update form submission to include size
+    - _Requirements: 2.1, 2.2_
+  - [ ] 4.2 Update component validation in admin form
+    - Validate category is from allowed list
+    - Validate size is from allowed list or null
+    - Display validation errors for invalid values
+    - _Requirements: 1.2, 2.1, 2.2_
+
+- [ ] 5. Update component library panel
+  - [ ] 5.1 Add size filter pills to ComponentLibraryPanel
+    - Add size filter buttons below category filters
+    - Implement combined category + size filtering
+    - Show active filter state visually
+    - _Requirements: 5.1, 5.2_
+  - [ ] 5.2 Update component cards to display size
+    - Show size badge on component cards
+    - Update card layout to accommodate size info
+    - _Requirements: 4.4_
+  - [ ] 5.3 Implement empty category hiding
+    - Filter out categories with zero published components
+    - Update category counts dynamically
+    - _Requirements: 2.4, 4.1_
+  - [ ] 5.4 Write property test for category count accuracy
+    - **Property 7: Category Count Accuracy**
+    - **Validates: Requirements 4.1**
+  - [ ] 5.5 Write property test for empty category hiding
+    - **Property 8: Empty Category Hiding**
+    - **Validates: Requirements 2.4**
+
+- [ ] 6. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 7. Implement search functionality
+  - [ ] 7.1 Enhance search to work with filters
+    - Combine search with category and size filters
+    - Implement case-insensitive name matching
+    - Show "no results" message with clear filters option
+    - _Requirements: 4.3, 5.3_
+  - [ ] 7.2 Write property test for search result correctness
+    - **Property 6: Search Result Correctness**
+    - **Validates: Requirements 4.3**
+
+- [ ] 8. Update component details modal
+  - [ ] 8.1 Enhance ComponentDetailsModal with size display
+    - Display size prominently in modal header
+    - Show all component details (dimensions, weight, age range, materials)
+    - Ensure 3D preview loads when model3D is available
+    - _Requirements: 8.1, 8.2_
+  - [ ] 8.2 Implement "Add to Design" from modal
+    - Add button to add component to design canvas
+    - Place component at default position
+    - Close modal after adding
+    - _Requirements: 8.3_
+  - [ ] 8.3 Write property test for component display completeness
+    - **Property 14: Component Display Completeness**
+    - **Validates: Requirements 4.4**
+
+- [ ] 9. Implement publish/unpublish functionality
+  - [ ] 9.1 Add publish toggle to admin component list
+    - Add quick toggle button for publish state
+    - Update API to handle publish state changes
+    - Show visual indicator for unpublished components
+    - _Requirements: 6.1, 6.2, 6.3_
+  - [ ] 9.2 Write property test for publish state visibility
+    - **Property 9: Publish State Visibility**
+    - **Validates: Requirements 6.1, 6.2, 6.3**
+
+- [ ] 10. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 11. Implement connection rules
+  - [ ] 11.1 Update ConnectionRulesEditor for new categories
+    - Update allowed connection types to match new categories
+    - Ensure connection points can reference new category types
+    - _Requirements: 3.1, 3.2_
+  - [ ] 11.2 Implement connection validation in configurator
+    - Validate connections against compatibility rules when placing
+    - Show validation errors for invalid connections
+    - _Requirements: 3.3_
+  - [ ] 11.3 Write property test for connection rules round-trip
+    - **Property 10: Connection Rules Round-Trip**
+    - **Validates: Requirements 3.4**
+  - [ ] 11.4 Write property test for connection validation correctness
+    - **Property 11: Connection Validation Correctness**
+    - **Validates: Requirements 3.3**
+
+- [ ] 12. Implement component update and delete
+  - [ ] 12.1 Ensure component updates save timestamp
+    - Verify updatedAt is set on all update operations
+    - Update admin API PATCH handler
+    - _Requirements: 7.1_
+  - [ ] 12.2 Implement component deletion
+    - Add delete endpoint if not exists
+    - Ensure deleted components don't appear in queries
+    - Add confirmation dialog in admin UI
+    - _Requirements: 7.3_
+  - [ ] 12.3 Write property test for update timestamp
+    - **Property 12: Component Update Timestamp**
+    - **Validates: Requirements 7.1**
+  - [ ] 12.4 Write property test for deletion completeness
+    - **Property 13: Component Deletion Completeness**
+    - **Validates: Requirements 7.3**
+
+- [ ] 13. Implement 3D model validation
+  - [ ] 13.1 Add file format validation for 3D models
+    - Validate uploaded files have .glb or .gltf extension
+    - Return appropriate error for invalid formats
+    - _Requirements: 1.4_
+  - [ ] 13.2 Write property test for 3D model format validation
+    - **Property 4: 3D Model Format Validation**
+    - **Validates: Requirements 1.4**
+
+- [ ] 14. Final Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.

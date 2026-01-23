@@ -1,0 +1,191 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and design management
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  emailVerified DateTime?
+  name          String
+  phone         String?
+  image         String?
+  passwordHash  String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  savedDesigns  SavedDesign[]
+  quoteRequests QuoteRequest[]
+
+  @@index([email])
+}
+
+// NextAuth Account model
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+// NextAuth Session model
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// NextAuth VerificationToken model
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Password Reset Token model
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expires   DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([token])
+}
+
+// Product Tier model (Essential, Premium, Luxury)
+model ProductTier {
+  id                 String      @id @default(cuid())
+  name               String
+  slug               String      @unique
+  priceMin           Float
+  priceMax           Float
+  features           String[]
+  materials          String[]
+  warrantyStructural Int // years
+  warrantyHardware   Int // years
+  image              String
+  order              Int         @default(0)
+  published          Boolean     @default(true)
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+  products           Product[]
+  components         Component[]
+
+  @@index([slug])
+  @@index([order])
+}
+
+// Product model for pre-designed jungle gym models
+model Product {
+  id               String      @id @default(cuid())
+  name             String
+  slug             String      @unique
+  tierId           String
+  tier             ProductTier @relation(fields: [tierId], references: [id], onDelete: Cascade)
+  images           String[]
+  thumbnail        String
+  shortDescription String      @db.Text
+  longDescription  String      @db.Text
+  basePrice        Float
+  dimensions       Json // { width, depth, height, unit }
+  ageRange         String
+  capacity         Int // number of children
+  features         String[]
+  published        Boolean     @default(false)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  @@index([slug])
+  @@index([tierId])
+  @@index([published])
+}
+
+// Component model for modular configurator pieces
+model Component {
+  id                 String      @id @default(cuid())
+  name               String
+  category           String
+  subcategory        String?
+  tierId             String
+  tier               ProductTier @relation(fields: [tierId], references: [id], onDelete: Cascade)
+  price              Float
+  thumbnail          String
+  model3D            String // URL to GLB/GLTF file
+  dimensions         Json // { width, depth, height, weight, unit }
+  weight             Float
+  connectionPoints   Json // Array of connection point definitions
+  compatibilityRules Json // Rules for what can connect to this component
+  metadata           Json // { ageRange, capacity, materials, colors }
+  published          Boolean     @default(false)
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  @@index([category])
+  @@index([tierId])
+  @@index([published])
+}
+
+// SavedDesign model for user-created configurations
+model SavedDesign {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name       String
+  thumbnail  String
+  designData Json // Complete configurator state
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// QuoteRequest model for customer quote submissions
+model QuoteRequest {
+  id             String   @id @default(cuid())
+  userId         String?
+  user           User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  designId       String?
+  designSnapshot Json // Complete design data at time of quote
+  customerInfo   Json // { name, email, phone, location }
+  pricing        Json // { components, subtotal, shipping, installation, total }
+  status         String   @default("pending") // pending, reviewed, quoted, converted
+  notes          String?  @db.Text
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}

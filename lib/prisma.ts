@@ -8,21 +8,27 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient | null };
 
 let prismaInstance: PrismaClient | null = null;
 
-try {
-  prismaInstance = globalForPrisma.prisma ||
-    new PrismaClient({
-      log:
-        process.env.NODE_ENV === 'development'
-          ? ['error'] // Reduced logging to avoid spam when DB is not available
-          : ['error'],
-    });
+// Only initialize Prisma if DATABASE_URL is configured
+// This prevents build hangs when no database is available
+if (process.env.DATABASE_URL) {
+  try {
+    prismaInstance = globalForPrisma.prisma ||
+      new PrismaClient({
+        log:
+          process.env.NODE_ENV === 'development'
+            ? ['error']
+            : ['error'],
+      });
 
-  if (process.env.NODE_ENV !== 'production') {
-    globalForPrisma.prisma = prismaInstance;
+    if (process.env.NODE_ENV !== 'production') {
+      globalForPrisma.prisma = prismaInstance;
+    }
+  } catch (error) {
+    console.warn('Prisma client initialization failed:', error);
+    prismaInstance = null;
   }
-} catch (error) {
-  console.warn('Prisma client initialization failed:', error);
-  prismaInstance = null;
+} else {
+  console.warn('DATABASE_URL not configured - using mock data');
 }
 
 export const prisma = prismaInstance as PrismaClient;

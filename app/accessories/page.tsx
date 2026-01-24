@@ -66,7 +66,7 @@ const accessories: Accessory[] = [
         price: 'R 1,100.00',
         description: 'Adventurous climbing challenge.',
         category: 'Climbing',
-        image: '/images/Accessories/Acc-commandonet.png',
+        image: '/images/CLIMBING NETS/20260124_2021_Image Generation_remix_01kfrksvddee1vda8b1z7hv5ef.webp',
     },
     {
         name: 'Ladder',

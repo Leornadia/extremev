@@ -160,7 +160,7 @@ export const Header: React.FC = () => {
 
                     {/* Dropdown Menu */}
                     {item.children && activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 pt-1 z-50">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-1 z-50">
                         <div
                           className="w-56 bg-white shadow-xl border border-neutral-100 rounded-lg py-2"
                           role="menu"

@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Layout';
 import { Heading, Text } from '@/components/ui/Typography';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Flame, Home, Fence, Construction, TreeDeciduous } from 'lucide-react';
 
 export default function LapasTimberPage() {
@@ -22,11 +23,14 @@ export default function LapasTimberPage() {
                 {/* Thatch & Lapas Section */}
                 <div className="mb-24">
                     <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-neutral-100 flex flex-col md:flex-row">
-                        <div className="md:w-1/2 bg-neutral-100 min-h-[400px] relative">
-                            {/* Ideally an image here, using placeholder color for now */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
-                                <Home className="w-24 h-24 text-amber-300 opacity-50" />
-                            </div>
+                        <div className="md:w-1/2 min-h-[400px] relative">
+                            <Image
+                                src="/images/Tach and Lapa/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_ (1).webp"
+                                alt="Professional lapa construction with thatched roof"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
                         </div>
 
                         <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
@@ -70,11 +74,14 @@ export default function LapasTimberPage() {
                 {/* Poles & Timber Section */}
                 <div>
                     <div className="bg-neutral-900 rounded-3xl overflow-hidden shadow-lg flex flex-col md:flex-row-reverse text-white">
-                        <div className="md:w-1/2 bg-neutral-800 min-h-[400px] relative">
-                            {/* Ideally an image here */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-stone-700 to-neutral-800 flex items-center justify-center">
-                                <TreeDeciduous className="w-24 h-24 text-stone-500 opacity-50" />
-                            </div>
+                        <div className="md:w-1/2 min-h-[400px] relative">
+                            <Image
+                                src="/images/Tach and Lapa/b_improve_the_quality_.webp"
+                                alt="Beautiful thatched roof house showcasing quality timber and thatch work"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
                         </div>
 
                         <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
@@ -127,3 +134,4 @@ export default function LapasTimberPage() {
         </main>
     );
 }
+

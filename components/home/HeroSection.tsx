@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Button } from '@/components/ui';
 import { ShieldCheck, Award, Heart, Search, ChevronDown } from 'lucide-react';
 
@@ -29,11 +30,16 @@ export function HeroSection() {
           <div className="max-w-4xl animate-fadeIn">
             {/* Logo */}
             <div className="mb-10 animate-slideUp" style={{ animationDelay: '0.1s' }}>
-              <img
-                src="/images/extreme-velvet-logo.webp"
-                alt="Extreme Velvet Logo"
-                className="h-24 w-auto drop-shadow-glow hover:scale-105 transition-transform duration-500"
-              />
+              <div className="relative h-24 w-auto inline-block">
+                <Image
+                  src="/images/extreme-velvet-logo.webp"
+                  alt="Extreme Velvet Logo"
+                  width={300}
+                  height={96}
+                  className="h-24 w-auto drop-shadow-glow hover:scale-105 transition-transform duration-500"
+                  priority
+                />
+              </div>
             </div>
 
             {/* Decorative Icons */}

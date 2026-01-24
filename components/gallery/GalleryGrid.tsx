@@ -25,8 +25,8 @@ const galleryImage = (file: string) =>
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: '1',
-    image: galleryImage('Backyard with In-ground Trampoline and Playground.jpg'),
-    thumbnail: galleryImage('Backyard with In-ground Trampoline and Playground.jpg'),
+    image: galleryImage('Backyard with In-ground Trampoline and Playground.webp'),
+    thumbnail: galleryImage('Backyard with In-ground Trampoline and Playground.webp'),
     title: 'Premium Backyard Paradise',
     category: ['Jungle Gym', 'Slides'],
     productTier: 'Premium',
@@ -36,8 +36,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '2',
-    image: galleryImage('Kids Playing in the jungle gym2.jpeg'),
-    thumbnail: galleryImage('Kids Playing in the jungle gym2.jpeg'),
+    image: galleryImage('Kids Playing in the jungle gym2.webp'),
+    thumbnail: galleryImage('Kids Playing in the jungle gym2.webp'),
     title: 'Adventure Playset',
     category: ['Jungle Gym', 'Swings'],
     productTier: 'Premium',
@@ -47,8 +47,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '3',
-    image: galleryImage('Children Playing on a Wooden Jungle Gym with a Green Slide.jpeg'),
-    thumbnail: galleryImage('Children Playing on a Wooden Jungle Gym with a Green Slide.jpeg'),
+    image: galleryImage('Children Playing on a Wooden Jungle Gym with a Green Slide.webp'),
+    thumbnail: galleryImage('Children Playing on a Wooden Jungle Gym with a Green Slide.webp'),
     title: 'Family Fun Zone',
     category: ['Jungle Gym'],
     productTier: 'Essential',
@@ -57,8 +57,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '4',
-    image: galleryImage('Colorful Barrel Crawl Tunnel on a Sand Playground.jpg'),
-    thumbnail: galleryImage('Colorful Barrel Crawl Tunnel on a Sand Playground.jpg'),
+    image: galleryImage('Colorful Barrel Crawl Tunnel on a Sand Playground.webp'),
+    thumbnail: galleryImage('Colorful Barrel Crawl Tunnel on a Sand Playground.webp'),
     title: 'Barrel Crawl Adventure',
     category: ['Slides'],
     productTier: 'Premium',
@@ -67,8 +67,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '5',
-    image: galleryImage('Outdoor Wooden Climbing Frame with Rock Wall and Monkey Bars.jpg'),
-    thumbnail: galleryImage('Outdoor Wooden Climbing Frame with Rock Wall and Monkey Bars.jpg'),
+    image: galleryImage('Outdoor Wooden Climbing Frame with Rock Wall and Monkey Bars.webp'),
+    thumbnail: galleryImage('Outdoor Wooden Climbing Frame with Rock Wall and Monkey Bars.webp'),
     title: 'Wooden Wonder',
     category: ['Jungle Gym', 'Accessories'],
     productTier: 'Luxury',
@@ -78,8 +78,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '6',
-    image: galleryImage('494936990_1331187581913558_6916942041237400274_n.jpg'),
-    thumbnail: galleryImage('494936990_1331187581913558_6916942041237400274_n.jpg'),
+    image: galleryImage('494936990_1331187581913558_6916942041237400274_n.webp'),
+    thumbnail: galleryImage('494936990_1331187581913558_6916942041237400274_n.webp'),
     title: 'Classic Design',
     category: ['Jungle Gym'],
     productTier: 'Essential',
@@ -88,8 +88,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '7',
-    image: galleryImage('Outdoor Entertainment Area with a Thatched Roof and Bar.jpg'),
-    thumbnail: galleryImage('Outdoor Entertainment Area with a Thatched Roof and Bar.jpg'),
+    image: galleryImage('Outdoor Entertainment Area with a Thatched Roof and Bar.webp'),
+    thumbnail: galleryImage('Outdoor Entertainment Area with a Thatched Roof and Bar.webp'),
     title: 'Multi-Level Play',
     category: ['Jungle Gym', 'Slides'],
     productTier: 'Premium',
@@ -98,8 +98,8 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: '8',
-    image: galleryImage('Red Wooden Playset with Yellow Slide and Sandpit.jpeg'),
-    thumbnail: galleryImage('Red Wooden Playset with Yellow Slide and Sandpit.jpeg'),
+    image: galleryImage('Red Wooden Playset with Yellow Slide and Sandpit.webp'),
+    thumbnail: galleryImage('Red Wooden Playset with Yellow Slide and Sandpit.webp'),
     title: 'Modern Playset',
     category: ['Jungle Gym', 'Swings'],
     productTier: 'Premium',

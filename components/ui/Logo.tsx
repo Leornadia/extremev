@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
@@ -6,20 +7,19 @@ interface LogoProps {
   height?: number;
 }
 
-export const Logo: React.FC<LogoProps> = ({ 
+export const Logo: React.FC<LogoProps> = ({
   className = 'h-12 w-auto',
   width = 180,
   height = 48
 }) => {
   return (
-    <img
+    <Image
       src="/images/extreme-velvet-logo.webp"
       alt="Extreme Velvet Logo"
       width={width}
       height={height}
       className={className}
-      loading="eager"
-      suppressHydrationWarning
+      priority
     />
   );
 };

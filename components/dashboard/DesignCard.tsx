@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { SavedDesign } from '@prisma/client';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Package,
   MoreVertical,
@@ -95,10 +96,12 @@ export function DesignCard({ design, onUpdate }: DesignCardProps) {
         {/* Thumbnail */}
         <div className="aspect-video bg-neutral-100 relative">
           {design.thumbnail ? (
-            <img
+            <Image
               src={design.thumbnail}
               alt={design.name}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (
             <div className="flex items-center justify-center h-full">

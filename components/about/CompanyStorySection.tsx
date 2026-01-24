@@ -11,28 +11,28 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    year: '2010',
-    title: 'The Beginning',
+    year: '2003',
+    title: 'Established',
     description:
-      'Founded with a vision to bring premium playground equipment to South African families, combining safety with imaginative play.',
+      'Extreme V was founded with a commitment to providing high-quality, safe, and durable wooden jungle gyms to families in Johannesburg and beyond.',
+  },
+  {
+    year: '2009',
+    title: 'Patent Innovation',
+    description:
+      'Developed and patented our unique connection bracket system, revolutionizing the safety and structural integrity of our playground equipment.',
   },
   {
     year: '2015',
-    title: 'Expansion & Growth',
+    title: 'Expansion',
     description:
-      'Expanded our product line and established partnerships with leading manufacturers, ensuring the highest quality materials.',
-  },
-  {
-    year: '2020',
-    title: 'Innovation in Design',
-    description:
-      'Introduced custom design capabilities, allowing families to create personalized play spaces tailored to their unique needs.',
+      'Expanded our operations to supply competitive H4 treated timber and poles, becoming a trusted supplier for fencing and building materials.',
   },
   {
     year: '2025',
-    title: 'Digital Transformation',
+    title: 'Digital Evolution',
     description:
-      'Launched our interactive 3D configurator, making it easier than ever to design and visualize your dream playground.',
+      'Launching our new digital platform and 3D configurator to help customers visualize and customize their perfect play areas.',
   },
 ];
 
@@ -86,16 +86,14 @@ export function CompanyStorySection() {
               {timelineEvents.map((event, index) => (
                 <div
                   key={event.year}
-                  className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
+                  className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
                 >
                   {/* Content */}
                   <div className="flex-1 w-full">
                     <div
-                      className={`bg-white rounded-xl shadow-md p-6 md:p-8 border border-neutral-200 hover:shadow-lg transition-shadow ${
-                        index % 2 === 0 ? 'md:text-right' : 'md:text-left'
-                      }`}
+                      className={`bg-white rounded-xl shadow-md p-6 md:p-8 border border-neutral-200 hover:shadow-lg transition-shadow ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'
+                        }`}
                     >
                       <div className="inline-block bg-primary-100 text-primary-700 px-4 py-1 rounded-full text-sm font-semibold mb-3">
                         {event.year}

@@ -27,6 +27,8 @@ const headerNavItems: NavItem[] = [
       { label: 'Compare Tiers', href: '/tiers' },
     ],
   },
+  { label: 'Accessories', href: '/accessories' },
+  { label: 'Lapas & Timber', href: '/lapas-timber' },
   { label: 'Gallery', href: '/gallery' },
   {
     label: 'How to Buy',

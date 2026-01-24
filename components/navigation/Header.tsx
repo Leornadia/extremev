@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
                 {headerNavItems.map((item) => (
                   <div
                     key={item.href}
-                    className="relative"
+                    className="relative group"
                     onMouseEnter={() =>
                       item.children && setActiveDropdown(item.label)
                     }
@@ -126,7 +126,7 @@ export const Header: React.FC = () => {
                     <Link
                       href={item.href}
                       className={cn(
-                        'px-4 py-2 text-[15px] font-medium transition-colors whitespace-nowrap uppercase tracking-wide',
+                        'px-4 py-2 text-[15px] font-medium transition-colors whitespace-nowrap uppercase tracking-wide inline-flex items-center gap-1',
                         'text-[#5A8B8B] hover:text-[#4A9B9B]',
                         'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded'
                       )}
@@ -138,25 +138,45 @@ export const Header: React.FC = () => {
                       }
                     >
                       {item.label}
+                      {item.children && (
+                        <svg
+                          className={cn(
+                            'w-4 h-4 transition-transform',
+                            activeDropdown === item.label && 'rotate-180'
+                          )}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      )}
                     </Link>
 
                     {/* Dropdown Menu */}
                     {item.children && activeDropdown === item.label && (
-                      <div
-                        className="absolute top-full right-0 mt-2 w-56 bg-white shadow-xl border border-neutral-100 py-3"
-                        role="menu"
-                        aria-label={`${item.label} submenu`}
-                      >
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block px-6 py-3 text-[15px] text-[#5A8B8B] hover:bg-neutral-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
-                            role="menuitem"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                      <div className="absolute top-full left-0 pt-1 z-50">
+                        <div
+                          className="w-56 bg-white shadow-xl border border-neutral-100 rounded-lg py-2"
+                          role="menu"
+                          aria-label={`${item.label} submenu`}
+                        >
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="block px-5 py-3 text-[15px] text-[#5A8B8B] hover:bg-neutral-50 hover:text-[#4A9B9B] transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
+                              role="menuitem"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>

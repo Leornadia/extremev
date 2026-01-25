@@ -22,25 +22,21 @@ const accessories: Accessory[] = [
         price: 'R 2,800.00',
         description: 'A classic swing seat, which is available in wood or plastic, brightly colored.\nWeight limit 50 KG.',
         category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
-        image: '/images/Accessories/SWINGS.webp',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/SWING SEATS.webp',
     },
     {
         name: 'BABY SWINGS',
         price: 'R 730.00',
         description: 'For the youngest member of your family this structural foam seat features safe one-piece construction.\nIncludes safety belt.',
         category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
-        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2014_Image Generation_remix_01kfrkbvc8ez7ssxse5j6b21ss.webp', // Keeping original baby swing image as requested or fallback if needed, but standardizing on new ones if available. Let's stick to the ones found in the folder list if matches. I see SWINGS.webp but not BABY SWINGS specific in the new list, so I'll keep the specialized folder path for baby swing if it's not replaced, OR use SWINGS.webp if that's the intention. **WAIT**, USER said "I uploaded new images on the accessories folder with correct naming". I should use THOSE.
-        // Re-reading file list: SWINGS.webp is there. 
-        // Let's use the new SWINGS.webp for Swings. Baby Swing might be the same or different. I'll use SWINGS.webp for the first one.
-        // For Baby Swings, I don't see a "BABY SWING.webp". I see "SWINGS.webp". I will assume SWINGS.webp is for the first item.
-        // I will use specific images where they match perfectly.
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/BABY SWINGS.webp',
     },
     {
         name: 'HORSE SWINGS',
         price: 'Contact for price',
         description: 'This is a favourite with all kids as it stimulates their role play.',
         category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
-        image: '/images/Accessories/TYRE BALL.webp', // This seems wrong for Horse Swing. The file list has TYRE BALL.webp. It doesn't have HORSE SWING.webp. I'll keep the old path for Horse Swing for now to be safe, or maybe TYRE BALL is what they mean? No, Tyre Ball is usually different. I'll search for "HORSE" in the file list again. It's not there. I will keep the old path for Horse Swing to avoid breaking it.
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/HORSE SWINGS.webp',
     },
     // DRUM SWINGS - SMALL SLIDES - LARGE SLIDES
     {

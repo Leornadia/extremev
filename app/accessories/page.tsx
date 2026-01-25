@@ -48,21 +48,21 @@ const accessories: Accessory[] = [
         price: 'R 1,200.00',
         description: 'This kind of swing enables playtime for multiple children. It works to complete a jungle gym... encouraging sociable play and fun.',
         category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
-        image: '/images/Accessories/DRUM.webp',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/DRUM SWINGS.webp',
     },
     {
         name: 'SMALL SLIDE',
         price: 'R 2,400.00',
         description: 'The small slide option is great for younger children. This offers hours of fun and excitement for your kids.',
         category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
-        image: '/images/Accessories/JUNIOR JUMBO SLIDE.webp',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/SMALL SLIDE.webp',
     },
     {
         name: 'LARGE SLIDE',
         price: 'R 3,950.00',
         description: 'Slides encourage activity and imagination. Your children will have heaps of fun on our slides and will keep themselves entertained for hours on end.',
         category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
-        image: '/images/Accessories/CURVY SLIDE.webp',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/LARGE SLIDE.webp',
     },
     // JUNGLE GYM ACCESSORIES
     {

@@ -11,160 +11,153 @@ interface Accessory {
     name: string;
     price?: string;
     description?: string;
-    category: 'Swings' | 'Slides' | 'Climbing' | 'Add-ons' | 'Structures';
-    image?: string;
 }
 
 const accessories: Accessory[] = [
-    // Swings
+    // SWING SEATS - BABY SWINGS - HORSE SWINGS
     {
-        name: 'Double Swing',
+        name: 'Swing Seats',
         price: 'R 2,800.00',
-        description: 'Encourages sociable play between children.',
-        category: 'Swings',
+        description: 'A classic swing seat, which is available in wood or plastic, brightly colored. Weight limit 50 KG.',
+        category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/epsilon_a_improve_the_quality_.webp',
     },
     {
-        name: 'Baby Swing Seat',
+        name: 'Baby Swings',
         price: 'R 730.00',
-        description: 'Safe and secure seat for toddlers.',
-        category: 'Swings',
+        description: 'For the youngest member of your family this structural foam seat features safe one-piece construction. Includes safety belt.',
+        category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2014_Image Generation_remix_01kfrkbvc8ez7ssxse5j6b21ss.webp',
     },
     {
-        name: 'Tyre Horse Swing',
+        name: 'Horse Swings',
         price: 'Contact for price',
-        description: 'Fun horse-shaped tyre swing.',
-        category: 'Swings',
+        description: 'This is a favourite with all kids as it stimulates their role play.',
+        category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/epsilon-fast_b_improve_the_quality_.webp',
     },
-    // Slides
+    // DRUM SWINGS - SMALL SLIDES - LARGE SLIDES
     {
-        name: '3m Fibreglass Jumbo Slide',
-        price: 'R 3,950.00',
-        description: 'Large slide for maximum fun.',
-        category: 'Slides',
-        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_ (1).webp',
+        name: 'Drum Swings',
+        price: 'R 1,200.00',
+        description: 'This kind of swing enables playtime for multiple children. It works to complete a jungle gym... encouraging sociable play and fun.',
+        category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_.webp',
     },
     {
-        name: 'Junior Jumbo Slide',
+        name: 'Small Slide',
         price: 'R 2,400.00',
-        description: 'Perfect for smaller children.',
-        category: 'Slides',
+        description: 'The small slide option is great for younger children. This offers hours of fun and excitement for your kids.',
+        category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2016_Red Playground Slide_remix_01kfrkga7pe0wsvwfd2xd3rbq1.webp',
     },
     {
-        name: 'Straight Slide',
-        price: 'Contact for price',
-        description: 'Classic straight design.',
-        category: 'Slides',
-        image: '/images/Accessories/Acc-straightslide.png',
+        name: 'Large Slide',
+        price: 'R 3,950.00',
+        description: 'Slides encourage activity and imagination. Your children will have heaps of fun on our slides and will keep themselves entertained for hours on end.',
+        category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_ (1).webp',
     },
-    // Climbing
+    // Other Accessories (Climbing & Add-ons)
     {
         name: 'Monkey Bars',
         price: 'R 2,000.00',
         description: 'Build upper body strength.',
-        category: 'Climbing',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-monkeybars.png',
     },
     {
         name: 'Commando Climbing Net',
         price: 'R 1,100.00',
         description: 'Adventurous climbing challenge.',
-        category: 'Climbing',
+        category: 'Climbing & Add-ons',
         image: '/images/CLIMBING NETS/20260124_2021_Image Generation_remix_01kfrksvddee1vda8b1z7hv5ef.webp',
     },
     {
         name: 'Ladder',
         price: 'Contact for price',
         description: 'Standard access ladder.',
-        category: 'Climbing',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-ladder.png',
     },
     {
         name: 'Wheel Ladder',
         price: 'Contact for price',
         description: 'Fun wheel climbing ladder.',
-        category: 'Climbing',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-wheelladder.png',
     },
     {
         name: 'Fireman Pole',
         price: 'Contact for price',
         description: 'Quick exit from the tower.',
-        category: 'Climbing',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-firemanpole.png',
-    },
-    // Add-ons
-    {
-        name: 'Single Drum with steering wheel',
-        price: 'R 1,200.00',
-        description: 'Imaginative play station.',
-        category: 'Add-ons',
-        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_.webp',
     },
     {
         name: 'Double Drum with 2 steering wheels',
         price: 'R 1,960.00',
         description: 'Double the fun!',
-        category: 'Add-ons',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-drum.png',
     },
     {
         name: 'Bridge',
         price: 'Contact for price',
         description: 'Connect towers together.',
-        category: 'Add-ons',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-bridge.png',
     },
     {
         name: 'Catwalk',
         price: 'Contact for price',
         description: 'Elevated walkway between structures.',
-        category: 'Add-ons',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-catwalk.png',
     },
     {
         name: 'Tyre Ball',
         price: 'Contact for price',
         description: 'Fun swinging tyre.',
-        category: 'Add-ons',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-tyreball.png',
     },
     {
         name: 'See-Saw',
         price: 'Contact for price',
         description: 'Classic playground favourite.',
-        category: 'Add-ons',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-seasaw.png',
     },
     {
         name: 'Roof',
         price: 'Contact for price',
         description: 'Shade and weather protection.',
-        category: 'Add-ons',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-roof.png',
     },
-    // Structures
     {
         name: 'Tower (with roof)',
         price: 'Contact for price',
         description: 'Standalone tower with shelter.',
-        category: 'Structures',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-tower-withroof.png',
     },
     {
         name: 'Tower (without roof)',
         price: 'Contact for price',
         description: 'Open-top tower structure.',
-        category: 'Structures',
+        category: 'Climbing & Add-ons',
         image: '/images/Accessories/Acc-tower-noroof.png',
     },
 ];
 
 export default function AccessoriesPage() {
-    const categories = ['Swings', 'Slides', 'Climbing', 'Structures', 'Add-ons'] as const;
+    const categories = [
+        'SWING SEATS - BABY SWINGS - HORSE SWINGS',
+        'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
+        'Climbing & Add-ons'
+    ] as const;
 
     return (
         <main className="min-h-screen pt-24 pb-16">

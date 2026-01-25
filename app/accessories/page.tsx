@@ -22,14 +22,21 @@ const accessories: Accessory[] = [
         price: 'R 2,800.00',
         description: 'Encourages sociable play between children.',
         category: 'Swings',
-        image: '/images/Accessories/Acc-swings.png',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/epsilon_a_improve_the_quality_.webp',
     },
     {
         name: 'Baby Swing Seat',
         price: 'R 730.00',
         description: 'Safe and secure seat for toddlers.',
         category: 'Swings',
-        image: '/images/Accessories/Acc-swings.png',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2014_Image Generation_remix_01kfrkbvc8ez7ssxse5j6b21ss.webp',
+    },
+    {
+        name: 'Tyre Horse Swing',
+        price: 'Contact for price',
+        description: 'Fun horse-shaped tyre swing.',
+        category: 'Swings',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/epsilon-fast_b_improve_the_quality_.webp',
     },
     // Slides
     {
@@ -37,14 +44,14 @@ const accessories: Accessory[] = [
         price: 'R 3,950.00',
         description: 'Large slide for maximum fun.',
         category: 'Slides',
-        image: '/images/Accessories/Acc-curvyslide.png',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_ (1).webp',
     },
     {
         name: 'Junior Jumbo Slide',
         price: 'R 2,400.00',
         description: 'Perfect for smaller children.',
         category: 'Slides',
-        image: '/images/Accessories/Acc-juniorslide.png',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2016_Red Playground Slide_remix_01kfrkga7pe0wsvwfd2xd3rbq1.webp',
     },
     {
         name: 'Straight Slide',
@@ -95,7 +102,7 @@ const accessories: Accessory[] = [
         price: 'R 1,200.00',
         description: 'Imaginative play station.',
         category: 'Add-ons',
-        image: '/images/Accessories/Acc-drum.png',
+        image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_.webp',
     },
     {
         name: 'Double Drum with 2 steering wheels',

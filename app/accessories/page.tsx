@@ -11,26 +11,28 @@ interface Accessory {
     name: string;
     price?: string;
     description?: string;
+    category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS' | 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES' | 'Climbing & Add-ons';
+    image?: string;
 }
 
 const accessories: Accessory[] = [
     // SWING SEATS - BABY SWINGS - HORSE SWINGS
     {
-        name: 'Swing Seats',
+        name: 'SWING SEATS',
         price: 'R 2,800.00',
-        description: 'A classic swing seat, which is available in wood or plastic, brightly colored. Weight limit 50 KG.',
+        description: 'A classic swing seat, which is available in wood or plastic, brightly colored.\nWeight limit 50 KG.',
         category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/epsilon_a_improve_the_quality_.webp',
     },
     {
-        name: 'Baby Swings',
+        name: 'BABY SWINGS',
         price: 'R 730.00',
-        description: 'For the youngest member of your family this structural foam seat features safe one-piece construction. Includes safety belt.',
+        description: 'For the youngest member of your family this structural foam seat features safe one-piece construction.\nIncludes safety belt.',
         category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2014_Image Generation_remix_01kfrkbvc8ez7ssxse5j6b21ss.webp',
     },
     {
-        name: 'Horse Swings',
+        name: 'HORSE SWINGS',
         price: 'Contact for price',
         description: 'This is a favourite with all kids as it stimulates their role play.',
         category: 'SWING SEATS - BABY SWINGS - HORSE SWINGS',
@@ -38,185 +40,84 @@ const accessories: Accessory[] = [
     },
     // DRUM SWINGS - SMALL SLIDES - LARGE SLIDES
     {
-        name: 'Drum Swings',
+        name: 'DRUM SWINGS',
         price: 'R 1,200.00',
         description: 'This kind of swing enables playtime for multiple children. It works to complete a jungle gym... encouraging sociable play and fun.',
         category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_.webp',
     },
     {
-        name: 'Small Slide',
+        name: 'SMALL SLIDE',
         price: 'R 2,400.00',
         description: 'The small slide option is great for younger children. This offers hours of fun and excitement for your kids.',
         category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/20260124_2016_Red Playground Slide_remix_01kfrkga7pe0wsvwfd2xd3rbq1.webp',
     },
     {
-        name: 'Large Slide',
+        name: 'LARGE SLIDE',
         price: 'R 3,950.00',
         description: 'Slides encourage activity and imagination. Your children will have heaps of fun on our slides and will keep themselves entertained for hours on end.',
         category: 'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
         image: '/images/SWING SEATS - BABY SWINGS - HORSE SWINGS/chatgpt-image-latest-high-fidelity-20251216_b_improve_the_quality_ (1).webp',
-    },
-    // Other Accessories (Climbing & Add-ons)
-    {
-        name: 'Monkey Bars',
-        price: 'R 2,000.00',
-        description: 'Build upper body strength.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-monkeybars.png',
-    },
-    {
-        name: 'Commando Climbing Net',
-        price: 'R 1,100.00',
-        description: 'Adventurous climbing challenge.',
-        category: 'Climbing & Add-ons',
-        image: '/images/CLIMBING NETS/20260124_2021_Image Generation_remix_01kfrksvddee1vda8b1z7hv5ef.webp',
-    },
-    {
-        name: 'Ladder',
-        price: 'Contact for price',
-        description: 'Standard access ladder.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-ladder.png',
-    },
-    {
-        name: 'Wheel Ladder',
-        price: 'Contact for price',
-        description: 'Fun wheel climbing ladder.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-wheelladder.png',
-    },
-    {
-        name: 'Fireman Pole',
-        price: 'Contact for price',
-        description: 'Quick exit from the tower.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-firemanpole.png',
-    },
-    {
-        name: 'Double Drum with 2 steering wheels',
-        price: 'R 1,960.00',
-        description: 'Double the fun!',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-drum.png',
-    },
-    {
-        name: 'Bridge',
-        price: 'Contact for price',
-        description: 'Connect towers together.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-bridge.png',
-    },
-    {
-        name: 'Catwalk',
-        price: 'Contact for price',
-        description: 'Elevated walkway between structures.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-catwalk.png',
-    },
-    {
-        name: 'Tyre Ball',
-        price: 'Contact for price',
-        description: 'Fun swinging tyre.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-tyreball.png',
-    },
-    {
-        name: 'See-Saw',
-        price: 'Contact for price',
-        description: 'Classic playground favourite.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-seasaw.png',
-    },
-    {
-        name: 'Roof',
-        price: 'Contact for price',
-        description: 'Shade and weather protection.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-roof.png',
-    },
-    {
-        name: 'Tower (with roof)',
-        price: 'Contact for price',
-        description: 'Standalone tower with shelter.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-tower-withroof.png',
-    },
-    {
-        name: 'Tower (without roof)',
-        price: 'Contact for price',
-        description: 'Open-top tower structure.',
-        category: 'Climbing & Add-ons',
-        image: '/images/Accessories/Acc-tower-noroof.png',
     },
 ];
 
 export default function AccessoriesPage() {
     const categories = [
         'SWING SEATS - BABY SWINGS - HORSE SWINGS',
-        'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES',
-        'Climbing & Add-ons'
+        'DRUM SWINGS - SMALL SLIDES - LARGE SLIDES'
     ] as const;
 
     return (
-        <main className="min-h-screen pt-24 pb-16">
+        <main className="min-h-screen pt-24 pb-16 bg-[#1a1a2e]">
             <Container>
                 <div className="text-center mb-16">
-                    <Heading as="h1" variant="h1" className="mb-6">
+                    <Heading as="h1" variant="h1" className="mb-6 text-white">
                         Jungle Gym Accessories
                     </Heading>
-                    <Text variant="large" className="max-w-2xl mx-auto text-neutral-600">
-                        Enhance your jungle gym with our wide range of high-quality accessories. From swings and slides to climbing nets and towers, we have everything to make playtime extra special.
+                    <Text variant="large" className="max-w-2xl mx-auto text-neutral-300">
+                        Enhance your jungle gym with our wide range of high-quality accessories.
                     </Text>
                 </div>
 
-                <div className="grid gap-16">
+                <div className="space-y-12">
                     {categories.map((category) => {
                         const categoryItems = accessories.filter((item) => item.category === category);
-                        if (categoryItems.length === 0) return null;
 
                         return (
-                            <div key={category}>
-                                <Heading as="h2" variant="h3" className="mb-8 border-b border-neutral-200 pb-2">
+                            <div key={category} className="border-2 border-orange-400 bg-white">
+                                {/* Section Header */}
+                                <div className="bg-[#1a1a2e] text-orange-400 text-center py-2 border-b-2 border-orange-400 font-bold text-xl uppercase tracking-wide">
                                     {category}
-                                </Heading>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                </div>
+
+                                {/* Items Grid */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-300">
                                     {categoryItems.map((item) => (
-                                        <div
-                                            key={item.name}
-                                            className="bg-white rounded-xl overflow-hidden shadow-sm border border-neutral-100 hover:shadow-lg transition-shadow group"
-                                        >
-                                            {item.image && (
-                                                <div className="relative h-48 bg-neutral-50 overflow-hidden">
+                                        <div key={item.name} className="flex flex-col h-full">
+                                            {/* Image */}
+                                            <div className="relative h-64 w-full bg-white border-b border-orange-300">
+                                                {item.image && (
                                                     <Image
                                                         src={item.image}
                                                         alt={item.name}
                                                         fill
-                                                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                        className="object-contain p-2"
+                                                        sizes="(max-width: 768px) 100vw, 33vw"
                                                     />
-                                                </div>
-                                            )}
-                                            <div className="p-6">
-                                                <Heading as="h3" variant="h4" className="mb-2">
-                                                    {item.name}
-                                                </Heading>
-                                                {item.description && (
-                                                    <Text className="text-neutral-500 text-sm mb-4">
-                                                        {item.description}
-                                                    </Text>
                                                 )}
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-primary-600 font-bold text-lg">
-                                                        {item.price}
-                                                    </span>
-                                                    <Link href="/contact">
-                                                        <Button size="sm" variant="outline">
-                                                            Enquire
-                                                        </Button>
-                                                    </Link>
-                                                </div>
+                                            </div>
+
+                                            {/* Item Name */}
+                                            <div className="text-center py-1 font-bold text-orange-500 text-lg uppercase tracking-wide border-b border-neutral-300">
+                                                {item.name}
+                                            </div>
+
+                                            {/* Description */}
+                                            <div className="text-center p-4 text-sm text-[#1a1a2e] flex-grow flex items-center justify-center">
+                                                <p className="whitespace-pre-line leading-relaxed">
+                                                    {item.description}
+                                                </p>
                                             </div>
                                         </div>
                                     ))}
@@ -226,16 +127,11 @@ export default function AccessoriesPage() {
                     })}
                 </div>
 
-                <div className="mt-20 bg-primary-50 rounded-2xl p-8 md:p-12 text-center">
-                    <ShoppingBag className="w-12 h-12 text-primary-600 mx-auto mb-6" />
-                    <Heading as="h2" variant="h2" className="mb-4">
-                        Ready to Order?
-                    </Heading>
-                    <Text className="mb-8 max-w-2xl mx-auto">
-                        Contact us today to discuss your accessory requirements. We can advise on compatibility and installation.
-                    </Text>
+                <div className="mt-16 text-center">
                     <Link href="/contact">
-                        <Button size="lg">Contact Us</Button>
+                        <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white border-none rounded-none px-8 uppercase font-bold tracking-wider">
+                            Contact Us to Order
+                        </Button>
                     </Link>
                 </div>
             </Container>

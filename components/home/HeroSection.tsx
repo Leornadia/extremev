@@ -1,23 +1,128 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui';
 import { ShieldCheck, Award, Heart, Search, ChevronDown } from 'lucide-react';
 
 export function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [shouldPlayVideo, setShouldPlayVideo] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    // Check for reduced motion preference
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(motionQuery.matches);
+
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    motionQuery.addEventListener('change', handleMotionChange);
+
+    // Check for mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Intersection Observer for lazy loading
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldPlayVideo(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      motionQuery.removeEventListener('change', handleMotionChange);
+      window.removeEventListener('resize', checkMobile);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Handle video playback
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !shouldPlayVideo || prefersReducedMotion) return;
+
+    // Use requestIdleCallback for non-critical video loading
+    const loadVideo = () => {
+      video.load();
+      video.play().catch(() => {
+        // Autoplay was prevented, show poster instead
+        console.log('Video autoplay prevented');
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(loadVideo, { timeout: 2000 });
+    } else {
+      setTimeout(loadVideo, 100);
+    }
+  }, [shouldPlayVideo, prefersReducedMotion]);
+
+  const handleVideoLoaded = () => {
+    setIsVideoLoaded(true);
+  };
+
   return (
     <section className="relative h-screen bg-neutral-900 overflow-hidden perspective-1000">
       {/* Background Video - Full Width Landscape */}
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-90"
-          suppressHydrationWarning
+      <div ref={containerRef} className="absolute inset-0">
+        {/* Poster/Fallback Image - Shows while video loads or on reduced motion */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-950 transition-opacity duration-700 ${isVideoLoaded && !prefersReducedMotion ? 'opacity-0' : 'opacity-100'
+            }`}
+          aria-hidden="true"
         >
-          <source src="/videos/Extreme V Landing Page video (2).mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          {/* Placeholder gradient background */}
+          <div className="absolute inset-0 bg-[url('/images/hero-poster.webp')] bg-cover bg-center bg-no-repeat" />
+        </div>
+
+        {/* Optimized Video Element */}
+        {!prefersReducedMotion && (
+          <video
+            ref={videoRef}
+            autoPlay={false}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoLoaded ? 'opacity-90' : 'opacity-0'
+              }`}
+            onLoadedData={handleVideoLoaded}
+            onCanPlayThrough={handleVideoLoaded}
+            suppressHydrationWarning
+            // Optimize for mobile - lower quality on cellular
+            {...(isMobile && { 'data-mobile': 'true' })}
+          >
+            {/* WebM for modern browsers - better compression */}
+            <source
+              src="/videos/Cover Video.webm"
+              type="video/webm"
+            />
+            {/* MP4 fallback for Safari and older browsers */}
+            <source
+              src="/videos/Extreme V Landing Page video (2).mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        )}
 
         {/* Premium Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/80 via-neutral-950/50 to-transparent"></div>

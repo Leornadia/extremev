@@ -59,7 +59,7 @@ export async function generateMetadata({
       product.ageRange,
     ],
     ogImage: product.images[0] || undefined,
-    ogType: 'product',
+    ogType: 'website',
     canonical: `/products/${product.slug}`,
   });
 }

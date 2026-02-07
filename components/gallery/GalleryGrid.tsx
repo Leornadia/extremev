@@ -19,7 +19,7 @@ export interface GalleryItem {
 }
 
 const galleryImage = (file: string) =>
-  `/images/gallery/${encodeURIComponent(file)}`;
+  `/images/gallery/${file}`;
 
 // Sample gallery data - in production, this would come from a CMS or database
 const GALLERY_ITEMS: GalleryItem[] = [
@@ -216,9 +216,9 @@ export function GalleryGrid() {
                     className={cn(
                       'px-3 py-1 rounded-full text-xs font-medium shadow-md',
                       item.productTier === 'Essential' &&
-                        'bg-blue-500 text-white',
+                      'bg-blue-500 text-white',
                       item.productTier === 'Premium' &&
-                        'bg-primary-500 text-white',
+                      'bg-primary-500 text-white',
                       item.productTier === 'Luxury' && 'bg-amber-500 text-white'
                     )}
                   >

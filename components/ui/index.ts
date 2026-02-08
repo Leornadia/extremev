@@ -45,3 +45,6 @@ export { SkipNavigation } from './SkipNavigation';
 
 // Mobile Optimization
 export { MobileOptimizedInput } from './MobileOptimizedInput';
+
+// Find My Playset CTA
+export { FindPlaysetCTA } from './FindPlaysetCTA';

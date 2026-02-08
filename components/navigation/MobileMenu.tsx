@@ -115,6 +115,46 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </button>
         </div>
 
+        {/* Find My Playset - Prominent CTA */}
+        <div className="px-6 pt-6 pb-2">
+          <Link
+            href="/find-my-playset"
+            onClick={onClose}
+            className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-xl bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold shadow-lg hover:from-primary-600 hover:to-primary-700 transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          >
+            <svg
+              className="w-6 h-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+            <span className="flex flex-col items-start">
+              <span className="text-xs uppercase tracking-wider opacity-80">3D Preview</span>
+              <span className="text-base font-bold">Find My Playset</span>
+            </span>
+            <svg
+              className="w-5 h-5 ml-auto"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </Link>
+        </div>
+
         {/* Navigation Items */}
         <div className="p-6">
           <ul className="space-y-2" role="list">

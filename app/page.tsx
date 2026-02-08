@@ -7,6 +7,7 @@ import {
   CTASection,
 } from '@/components/home';
 import { SectionDivider } from '@/components/decorative';
+import { FindPlaysetCTA } from '@/components/ui/FindPlaysetCTA';
 import { generateLocalBusinessSchema } from '@/lib/seo/structured-data';
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
         <SectionDivider variant="clouds" color="text-neutral-50" />
 
         <ProductTierSection />
+
+        {/* Find My Playset CTA Banner */}
+        <FindPlaysetCTA variant="banner" />
 
         <SectionDivider variant="hills" color="text-primary-50/30" />
 

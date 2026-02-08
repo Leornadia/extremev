@@ -47,7 +47,7 @@ export default function PlaysetSizePage() {
 
   const handleSelectSize = (size: PlaysetSizeValue) => {
     setSelectedSize(size);
-    goToStructures(size);
+    // Don't auto-navigate - user must click CONTINUE button
   };
 
   const handleContinue = () => {

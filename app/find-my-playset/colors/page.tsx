@@ -12,17 +12,14 @@ const colorOptions = [
   {
     id: 'no-preference' as const,
     label: 'NO PREFERENCE',
-    showCheckmark: true,
   },
   {
     id: 'color-accents' as const,
     label: 'COLOR ACCENTS',
-    showCheckmark: false,
   },
   {
     id: 'natural' as const,
     label: 'NATURAL',
-    showCheckmark: false,
   },
 ];
 
@@ -126,8 +123,8 @@ export default function PlaysetColorsPage() {
                     )}
                   </div>
 
-                  {/* Selected Checkmark for "No Preference" */}
-                  {option.showCheckmark && isSelected && (
+                  {/* Selected Checkmark */}
+                  {isSelected && (
                     <div className="absolute bottom-4 right-4 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center shadow-lg z-10">
                       <svg
                         className="w-5 h-5 text-white"

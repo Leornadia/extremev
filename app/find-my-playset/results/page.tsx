@@ -91,7 +91,7 @@ export default function PlaysetResultsPage() {
     return (
       <div className="flex flex-col items-center">
         <h2 className="text-xl font-bold text-primary-600 mb-2">{title}</h2>
-        
+
         {!hasResults ? (
           <div className="text-center">
             <p className="text-red-500 font-semibold mb-4">NO MATCHES</p>
@@ -140,13 +140,43 @@ export default function PlaysetResultsPage() {
 
             {currentResult && (
               <div className="w-full">
-                <div className="relative w-full aspect-[4/3] mb-4 rounded-lg overflow-hidden">
+                <div className="group relative w-full aspect-[4/3] mb-4 rounded-lg overflow-hidden cursor-pointer"
+                  onClick={() => {
+                    const queryString = searchParams.toString();
+                    router.push(`/find-my-playset/product/${currentResult.id}${queryString ? `?${queryString}` : ''}`);
+                  }}
+                >
                   <Image
                     src={currentResult.image}
                     alt={currentResult.name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+                  {/* View 3D Button Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  <button
+                    className="absolute bottom-3 left-3 flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const queryString = searchParams.toString();
+                      router.push(`/find-my-playset/product/${currentResult.id}${queryString ? `?${queryString}` : ''}`);
+                    }}
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                      <line x1="12" y1="22.08" x2="12" y2="12" />
+                    </svg>
+                    View 3D
+                  </button>
                 </div>
                 <h3 className="text-lg font-bold text-neutral-900 mb-2 text-center">
                   {currentResult.name}

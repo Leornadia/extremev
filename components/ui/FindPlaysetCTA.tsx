@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 interface FindPlaysetCTAProps {
@@ -12,13 +13,24 @@ interface FindPlaysetCTAProps {
 /**
  * Floating CTA button that appears on all pages to help users find their ideal playset.
  * Features a magnetic 3D icon and attention-grabbing animation.
+ * Automatically hides on /find-my-playset pages to avoid distraction.
  */
 export function FindPlaysetCTA({ variant = 'floating', className }: FindPlaysetCTAProps) {
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [isPulsing, setIsPulsing] = useState(true);
+    const pathname = usePathname();
+
+    // Check if user is on a find-my-playset page
+    const isOnFindPlaysetPage = pathname?.startsWith('/find-my-playset');
 
     useEffect(() => {
+        // Don't show at all if on find-my-playset pages
+        if (isOnFindPlaysetPage) {
+            setIsVisible(false);
+            return;
+        }
+
         // Show the button after a short delay for a smoother page load
         const timer = setTimeout(() => setIsVisible(true), 1000);
 
@@ -29,10 +41,12 @@ export function FindPlaysetCTA({ variant = 'floating', className }: FindPlaysetC
             clearTimeout(timer);
             clearTimeout(pulseTimer);
         };
-    }, []);
+    }, [isOnFindPlaysetPage]);
 
     // Restart pulsing when user scrolls significantly
     useEffect(() => {
+        if (isOnFindPlaysetPage) return;
+
         let lastScrollY = window.scrollY;
 
         const handleScroll = () => {
@@ -48,7 +62,12 @@ export function FindPlaysetCTA({ variant = 'floating', className }: FindPlaysetC
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [isOnFindPlaysetPage]);
+
+    // For floating variant, don't render anything if on find-my-playset pages
+    if (variant === 'floating' && isOnFindPlaysetPage) {
+        return null;
+    }
 
     if (variant === 'floating') {
         return (
